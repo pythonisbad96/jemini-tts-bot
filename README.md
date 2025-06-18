@@ -8,7 +8,6 @@
   <li>잼민이 스타일 음성 지원 (VITS 기반)</li>
   <li>명령어 없이 UI 기반 음성 송출</li>
   <li>라이트한 TTS 모델로 빠른 반응 속도</li>
-  <li>24시간 무료 호스팅 가능 (Daki 플랫폼)</li>
 </ul>
 
 <details>
@@ -43,15 +42,6 @@
     <li><strong>보이스:</strong> Bark "ko_speaker_4" 스타일을 TTS로 이식</li>
     <li><strong>전처리:</strong> Whisper 또는 SpeechRecognition으로 명령어 없이 채팅 감지</li>
     <li><strong>재생 방식:</strong> <code>discord.FFmpegPCMAudio</code>로 음성 출력</li>
-  </ul>
-</details>
-
-<details>
-  <summary>🌐 Daki 24시간 호스팅</summary>
-  <ul>
-    <li>Daki 플랫폼에 GitHub 연동 및 봇 등록</li>
-    <li>환경변수에 <code>DISCORD_TOKEN</code> 등록</li>
-    <li>자동 재시작 및 웹 콘솔 제공</li>
   </ul>
 </details>
 
