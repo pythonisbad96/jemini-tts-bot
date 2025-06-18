@@ -1,78 +1,59 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <title>잼민이 Discord TTS Bot</title>
-  <style>
-    body { font-family: "Pretendard", sans-serif; line-height: 1.6; padding: 2em; background-color: #f9f9f9; }
-    h1 { color: #333; }
-    code, pre { background: #eee; padding: 0.2em 0.4em; border-radius: 4px; font-size: 0.9em; }
-    .section { margin-bottom: 2em; }
-    ul { list-style-type: square; }
-  </style>
-</head>
-<body>
+<h1>🎙️ 디스코드 잼민이 TTS 봇</h1>
 
-  <h1>🗣️ 잼민이 Discord TTS Bot</h1>
-  <p><strong>디스코드 채팅을 입력하면 실시간으로 잼민이 보이스로 읽어주는 봇</strong></p>
+<p>텍스트 채팅을 자동으로 감지하여 잼민이 스타일로 읽어주는 초경량 디스코드 TTS 봇입니다.</p>
 
-  <div class="section">
-    <h2>📌 주요 기능</h2>
-    <ul>
-      <li>채팅 입력 시 자동 TTS 읽기 (명령어 없이)</li>
-      <li>잼민이 스타일 보이스 (pitch, rate 조정)</li>
-      <li>FFmpeg 기반 음성 재생</li>
-      <li>slash 명령어 기반 봇 제어도 지원</li>
-    </ul>
-  </div>
+<h2>🚀 주요 기능</h2>
+<ul>
+  <li>채팅 입력 자동 감지 및 실시간 음성 출력</li>
+  <li>잼민이 스타일 음성 지원 (VITS 기반)</li>
+  <li>명령어 없이 UI 기반 음성 송출</li>
+  <li>라이트한 TTS 모델로 빠른 반응 속도</li>
+  <li>24시간 무료 호스팅 가능 (Daki 플랫폼)</li>
+</ul>
 
-  <div class="section">
-    <h2>🛠 사용 기술</h2>
-    <ul>
-      <li><code>discord.py</code>: 디스코드 봇 기본 구조</li>
-      <li><code>edge-tts</code>: Microsoft Neural TTS API 사용</li>
-      <li><code>ffmpeg</code>: mp3 음성을 PCM으로 변환 및 재생</li>
-      <li><code>dotenv</code>: 봇 토큰 환경변수로 관리</li>
-    </ul>
-  </div>
+<details>
+  <summary>📁 폴더 구조</summary>
+  <pre><code>.
+├── bot.py
+├── tts/
+│   ├── generate_tts.py  # 잼민이 스타일 TTS 생성 함수
+│   └── model/           # 사전 학습된 VITS 모델 (또는 edge-tts 사용 시 해당 없음)
+├── audio/
+│   └── output.wav       # 생성된 음성 임시 저장 파일
+├── .env                 # 디스코드 토큰 저장
+└── requirements.txt     # 필요한 패키지 목록
+</code></pre>
+</details>
 
-  <div class="section">
-    <h2>🎛 잼민이 보이스 설정 예시</h2>
-    <pre><code>
-Communicate(
-  text="안녕 나는 잼민이야~",
-  voice="ko-KR-SunHiNeural",
-  rate="+20%",
-  pitch="+20%"
-)
-    </code></pre>
-    <p><small>※ 높고 빠른 여성 목소리를 기반으로 설정</small></p>
-  </div>
+<details>
+  <summary>⚙️ 실행 방법</summary>
+  <ol>
+    <li><code>git clone https://github.com/사용자명/tts-discord-bot.git</code></li>
+    <li><code>cd tts-discord-bot</code></li>
+    <li><code>pip install -r requirements.txt</code></li>
+    <li><code>.env</code> 파일에 디스코드 토큰 추가</li>
+    <li><code>python bot.py</code> 실행</li>
+  </ol>
+</details>
 
-  <div class="section">
-    <h2>📁 프로젝트 구조 예시</h2>
-    <pre><code>
-📁 jemini-tts-bot/
-├── bot.py           # 봇 실행 메인
-├── tts.py           # TTS 생성 함수
-├── .env             # 디스코드 토큰 저장
-├── requirements.txt # 라이브러리 목록
-    </code></pre>
-  </div>
+<details>
+  <summary>🔊 TTS 기법 정리</summary>
+  <ul>
+    <li><strong>모델:</strong> VITS 기반 경량 음성 합성</li>
+    <li><strong>보이스:</strong> Bark "ko_speaker_4" 스타일을 TTS로 이식</li>
+    <li><strong>전처리:</strong> Whisper 또는 SpeechRecognition으로 명령어 없이 채팅 감지</li>
+    <li><strong>재생 방식:</strong> <code>discord.FFmpegPCMAudio</code>로 음성 출력</li>
+  </ul>
+</details>
 
-  <div class="section">
-    <h2>💡 향후 확장 예정</h2>
-    <ul>
-      <li>음성 인식 (Whisper) 기능 추가</li>
-      <li>사용자별 voice profile 설정</li>
-      <li>웹 UI (Streamlit 또는 Flask 기반)</li>
-    </ul>
-  </div>
+<details>
+  <summary>🌐 Daki 24시간 호스팅</summary>
+  <ul>
+    <li>Daki 플랫폼에 GitHub 연동 및 봇 등록</li>
+    <li>환경변수에 <code>DISCORD_TOKEN</code> 등록</li>
+    <li>자동 재시작 및 웹 콘솔 제공</li>
+  </ul>
+</details>
 
-  <footer>
-    <hr />
-    <p>© 2025 JaminiBot by HeeJune Kim | Powered by <code>Python</code> + <code>discord.py</code></p>
-  </footer>
-
-</body>
-</html>
+<hr>
+<p>🛠 제작자: <strong>HeeJune Kim</strong> | 📅 최신 업데이트: 2025년 6월</p>
